@@ -1,0 +1,28 @@
+{
+  "name": "strapi-plugin-migrate-data",
+  "version": "0.0.1",
+  "description": "This plugin is developed for migrating strapi version 3 data to strapi version 4 with swagger.",
+  "strapi": {
+    "name": "Migrate-Data",
+    "description": "This plugin is developed for migrating strapi version 3 data to strapi version 4 with swagger.",
+    "kind": "plugin",
+    "displayName": "Migrate Data"
+  },
+  "dependencies": {
+    "axios": "^0.27.2",
+    "jwt-decode": "^3.1.2"
+  },
+  "author": {
+    "name": "OGZATECH development team"
+  },
+  "maintainers": [
+    {
+      "name": "Cihansrb"
+    }
+  ],
+  "engines": {
+    "node": ">=14.19.1 <=16.x.x",
+    "npm": ">=6.0.0"
+  },
+  "license": "MIT"
+}
