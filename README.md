@@ -41,7 +41,7 @@ strapi build
 
 <p  align="center">
 
-<img  src="https://raw.githubusercontent.com/OgzaTech/strapi-plugin-migratedata/main/assets/swagger_installed.png"  alt="Migrate-data"  height="200"  />
+<img  src="https://raw.githubusercontent.com/OgzaTech/strapi-plugin-migrate-data/main/assets/swagger_installed.png"  alt="Migrate-data"  height="200"  />
 
 </p>
 
@@ -146,7 +146,7 @@ Strapiyi production modda çalıştırın. Developer mod desteklenmez.
 
 <p  align="center">
 
-<img  src="https://raw.githubusercontent.com/OgzaTech/strapi-plugin-migratedata/main/assets/installed_migrate_data.png"  alt="Migrate-data"  height="250"  />
+<img  src="https://raw.githubusercontent.com/OgzaTech/strapi-plugin-migrate-data/main/assets/installed_migrate_data.png"  alt="Migrate-data"  height="250"  />
 
 </p>
 
@@ -170,7 +170,7 @@ Settings sekmesini açıp V3 e ait swagger url i buraya giriyoruz ve ardından g
 
 <p  align="center">
 
-<img  src="https://raw.githubusercontent.com/OgzaTech/strapi-plugin-migratedata/main/assets/settings.png"  alt="Migrate-data"  height="230"  />
+<img  src="https://raw.githubusercontent.com/OgzaTech/strapi-plugin-migrate-data/main/assets/settings.png"  alt="Migrate-data"  height="230"  />
 
 </p>
 
@@ -182,7 +182,7 @@ sol tarafta v4 e ait talolar sağ tarafta ise v3 e ait tabloları seçebiliceği
 
 <p  align="center">
 
-<img  src="https://raw.githubusercontent.com/OgzaTech/strapi-plugin-migratedata/main/assets/settings_table.png"  alt="Migrate-data"  height="180"  />
+<img  src="https://raw.githubusercontent.com/OgzaTech/strapi-plugin-migrate-data/main/assets/settings_table.png"  alt="Migrate-data"  height="180"  />
 
 </p>
 
@@ -194,7 +194,7 @@ v4 deki tabloya karşılık gelen v3 tablosunu seçtikten sonra ok tuşuna bası
 
 <p  align="center">
 
-<img  src="https://raw.githubusercontent.com/OgzaTech/strapi-plugin-migratedata/main/assets/settings_select_column.png"  alt="Migrate-data"  height="300"  />
+<img  src="https://raw.githubusercontent.com/OgzaTech/strapi-plugin-migrate-data/main/assets/settings_select_column.png"  alt="Migrate-data"  height="300"  />
 
 </p>
 
@@ -206,7 +206,7 @@ Eklediklerimiz collection sekmesine fotoğraftaki gibi gelicektir. clear table s
 
 <p  align="center">
 
-<img  src="https://raw.githubusercontent.com/OgzaTech/strapi-plugin-migratedata/main/assets/collection.png"  alt="Migrate-data"  height="210"  />
+<img  src="https://raw.githubusercontent.com/OgzaTech/strapi-plugin-migrate-data/main/assets/collection.png"  alt="Migrate-data"  height="210"  />
 
 </p>
 
@@ -214,6 +214,6 @@ Eğer ekli koleksiyon varsa settings sekmesinden düzenleme yapılabilir.Değiş
 
 <p  align="center">
 
-<img  src="https://raw.githubusercontent.com/OgzaTech/strapi-plugin-migratedata/main/assets/edit_collections.png"  alt="Migrate-data"  height="210"  />
+<img  src="https://raw.githubusercontent.com/OgzaTech/strapi-plugin-migrate-data/main/assets/edit_collections.png"  alt="Migrate-data"  height="210"  />
 
 </p>
