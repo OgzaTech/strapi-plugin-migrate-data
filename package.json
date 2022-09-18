@@ -3,7 +3,7 @@
   "version": "0.0.3",
   "description": "This plugin is developed for migrating strapi version 3 data to strapi version 4 with swagger.",
   "strapi": {
-    "name": "Migrate-Data",
+    "name": "strapi-plugin-migrate-data",
     "description": "This plugin is developed for migrating strapi version 3 data to strapi version 4 with swagger.",
     "kind": "plugin",
     "displayName": "Migrate Data"

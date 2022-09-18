@@ -83,38 +83,6 @@ yarn add strapi-plugin-merge-data
 
   
 
-strapi config dosyası kullanın ve kod satırını ekleyin
-
-  
-
-```js
-
-// config/plugins.js
-
-  
-
-module.exports = () => ({
-
-//...
-
-module.exports = {
-
-'strapi-plugin-migrate-data': {
-
-enabled:  true,
-
-resolve:  './node_modules/strapi-plugin-migrate-data/'
-
-},
-
-}
-
-})
-
-```
-
-  
-
 sonrasında strapi build edilmeli:
 
 ```bash
