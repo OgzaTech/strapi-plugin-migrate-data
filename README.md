@@ -214,6 +214,6 @@ Eğer ekli koleksiyon varsa settings sekmesinden düzenleme yapılabilir.Değiş
 
 <p  align="center">
 
-<img  src="https://raw.githubusercontent.com/OgzaTech/strapi-plugin-migrate-data/main/assets/edit_collections.png"  alt="Migrate-data"  height="210"  />
+<img  src="https://raw.githubusercontent.com/OgzaTech/strapi-plugin-migrate-data/main/assets/edit_collections.png"  alt="Migrate-data"  height="300"  />
 
 </p>
