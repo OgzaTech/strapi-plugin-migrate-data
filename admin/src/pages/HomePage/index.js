@@ -21,6 +21,12 @@ import Header from './Header';
 import http from '../../utils/http';
 import CollectionsTableColumn from './CollectionsTableColumn';
 import CollectionsTableHeader from './CollectionsTableHeader';
+import { Dialog, DialogBody, DialogFooter } from '@strapi/design-system/Dialog';
+import ExclamationMarkCircle from '@strapi/icons/ExclamationMarkCircle';
+import Trash from '@strapi/icons/Trash';
+import { Stack } from '@strapi/design-system/Stack';
+import { Flex } from '@strapi/design-system/Flex';
+import { Typography } from '@strapi/design-system/Typography';
 
 let dataArray = [];
 let exportSchema = {};
@@ -31,22 +37,40 @@ const HomePage = () => {
   const [okButtonState, setOkButtonState] = useState(false);
   const [ConfigCollection, setConfigCollection] = useState([]);
   const [getConfigCollectionControl, setGetConfigCollectionControl] = useState(true)
- 
-  if(getConfigCollectionControl){
+  const [editMod, setEditMod] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+
+
+  if (getConfigCollectionControl) {
     http.getConfigCollection().then((data) => {
-      setConfigCollection(data)
+      setConfigCollection(data.collections)
+      if (data.swaggerUrl) {
+        setEditMod(true)
+        setMessage(data.swaggerUrl)
+        console.log("buraya giriyor")
+        getSchemas(data.swaggerUrl)
+      }
     })
     setGetConfigCollectionControl(false)
   }
-   
 
+  const getSchemas = async (url) => {
+    if (url) {
+      exportSchema = await http.getExportSchema(url);
+      importSchema = await http.getImportSchema();
+      setOkButtonState(true);
+    }
+  }
 
   const handleClick = async (event) => {
-    if(message){
+    console.log("çalıştı")
+    if (message) {
+      console.log("burasıda çalıştı")
+
       exportSchema = await http.getExportSchema(message);
       importSchema = await http.getImportSchema();
       setOkButtonState(true);
-    } 
+    }
   };
 
   const handleChange = event => {
@@ -55,6 +79,7 @@ const HomePage = () => {
   };
 
   const saveSelected = async (as) => {
+    /*     console.log(dataArray)*/
     await http.addConfigCollection(message, dataArray);
     window.location.reload()
   }
@@ -65,11 +90,18 @@ const HomePage = () => {
     dataArray[id] = childData;
   }
 
+  const clearModel = async(e) => {
+    await http.clearConfigCollection();
+    window.location.reload()
+  }
+
+
   return (
 
     <Layout>
 
       <Header />
+
 
       <Box padding={8} margin={10} background="neutral">
         <TabGroup label="Some stuff for the label" id="tabs">
@@ -81,8 +113,8 @@ const HomePage = () => {
             <TabPanel>
               <Box color="neutral800" padding={4} background={style.mainBackground}>
 
-                <CollectionsTableHeader 
-                setGetConfigCollectionControl ={setGetConfigCollectionControl}
+                <CollectionsTableHeader
+                  setGetConfigCollectionControl={setGetConfigCollectionControl}
                 />
                 {
                   ConfigCollection.map((data, index) => (
@@ -103,11 +135,12 @@ const HomePage = () => {
                 <ContentLayout>
                   <Box padding={style.mediumPadding} background={style.mainBackground} shadow={style.mainShadow} hasRadius={true}>
 
-                    <TextInput label="V3 Swagger Url" placeholder="Swagger url" name="content" onChange={handleChange} value={message} />
+                    <TextInput disabled={editMod} label="V3 Swagger Url" placeholder="Swagger url" name="content" onChange={handleChange} value={message} />
 
                   </Box>
+                  {editMod == false ? <Button onClick={handleClick} style={style.primaryButton}>Get Entity Model</Button> :
+                    <Box padding={4}><Divider /></Box>}
 
-                  <Button onClick={handleClick} style={style.primaryButton}>Get Entity Model</Button>
                   {
                     Object.keys(importSchema).map((data, index) => (
                       <SettingsTableItem
@@ -117,12 +150,42 @@ const HomePage = () => {
                         getData={getData}
                         exportSchema={exportSchema}
                         importSchema={importSchema}
+                        editMod={editMod}
+                        ConfigCollection={ConfigCollection}
                       />
                     ))
                   }
                   {okButtonState == true ?
-                    <Button onClick={saveSelected} style={style.primaryButton} >Save Selected</Button> :
+                    (editMod == false ?
+                      <Button onClick={saveSelected} style={style.primaryButton} >Save Selected</Button>
+                      : <Layout>
+                        <Button onClick={saveSelected} style={{
+                          float: "left", 
+                          marginTop: "20px",
+                          height: "45px",
+                          marginBottom: "20px",
+                          marginRight: "20px"
+                        }} >Save Change</Button>
+                        <Button onClick={() => setIsVisible(true)} style={style.primaryButton} variant='danger' >Clear Model</Button>
+                        <Dialog onClose={() => setIsVisible(false)} title="Confirmation" isOpen={isVisible}>
+                          <DialogBody icon={<ExclamationMarkCircle />}>
+                            <Stack spacing={2}>
+                              <Flex justifyContent="center">
+                                <Typography id="confirm-description">Are you sure you want to delete all model?</Typography>
+                              </Flex>
+                            </Stack>
+                          </DialogBody>
+                          <DialogFooter startAction={<Button onClick={() => setIsVisible(false)} variant="tertiary">
+                            Cancel
+                          </Button>} endAction={<Button onClick={clearModel} variant="danger-light" startIcon={<Trash />}>
+                            Confirm
+                          </Button>} />
+                        </Dialog>
+
+                      </Layout>)
+                    :
                     <Box padding={8}><Divider /></Box>}
+
 
                 </ContentLayout>
 

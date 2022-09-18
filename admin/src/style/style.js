@@ -6,6 +6,7 @@ module.exports = {
     primaryButton: {
         marginTop: "20px",
         height: "45px",
-        marginBottom: "20px"
+        marginBottom: "20px",
+        marginRight: "20px"
     }
 }

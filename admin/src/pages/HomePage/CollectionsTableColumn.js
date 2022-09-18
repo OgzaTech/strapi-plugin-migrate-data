@@ -20,6 +20,10 @@ const CollectionsTableColumn = (props) => {
 
     const onClickDelete = async (e) => {
         await http.deleteSelectedCollections(props.id)
+        let a = await http.getConfigCollection();
+        if(!a.swaggerUrl){
+            window.location.reload()
+        }
         props.setGetConfigCollectionControl(true)
     }
     const onClickDataTransfer = async (e) => {

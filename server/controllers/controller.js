@@ -29,12 +29,12 @@ module.exports = ({ strapi }) => ({
     return schemaUseCase.getImportSchema(data);
   },
   async addConfigCollection(ctx) {
-    let { baseUrl, choices } = ctx.request.body;
-    baseUrl = baseUrl.slice(0, baseUrl.indexOf('documentation'))
+    let { swaggerUrl, selected } = ctx.request.body;
+    let baseUrl = swaggerUrl.slice(0, swaggerUrl.indexOf('documentation'))
     const jsonPath = path.join(path.normalize(__dirname + '/../..'), 'ConfigCollection.json');
 
     const configCollectionUseCase = new ConfigCollectionUseCase()
-    let data = await configCollectionUseCase.savePostData(choices, baseUrl, jsonPath);
+    let data = await configCollectionUseCase.savePostData(selected,baseUrl,swaggerUrl,jsonPath);
 
     return { "isSuccess": true }
   },
@@ -111,11 +111,11 @@ module.exports = ({ strapi }) => ({
       }
 
 
-      jsonContent[index] = data;
+      jsonContent.collections[index] = data;
       fs.writeFileSync(jsonPath, JSON.stringify(jsonContent), 'utf-8');
 
     }
-    jsonContent[index].isDataMigrated = true;
+    jsonContent.collections[index].isDataMigrated = true;
     fs.writeFileSync(jsonPath, JSON.stringify(jsonContent), 'utf-8');
 
 
@@ -166,16 +166,23 @@ module.exports = ({ strapi }) => ({
 
         data.transferedRelationCount += 1;
 
-        jsonContent[index] = data;
+        jsonContent.collections[index] = data;
         fs.writeFileSync(jsonPath, JSON.stringify(jsonContent), 'utf-8');
 
       })
 
 
     }
-    jsonContent[index].isRelationMigrated = true;
-    jsonContent[index].isCompleted = true;
+    jsonContent.collections[index].isRelationMigrated = true;
+    jsonContent.collections[index].isCompleted = true;
     fs.writeFileSync(jsonPath, JSON.stringify(jsonContent), 'utf-8');
     return true
+  },
+  async clearConfigCollection(ctx) {
+    const jsonPath = path.join(path.normalize(__dirname + '/../..'), 'ConfigCollection.json');
+    const configCollectionUseCase = new ConfigCollectionUseCase()
+    let data = await configCollectionUseCase.clearConfigCollection(jsonPath);
+
+    return data;
   },
 });

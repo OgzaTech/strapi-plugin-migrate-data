@@ -70,4 +70,13 @@ module.exports = [
       auth: false,
     },
   },
+  {
+    method: 'POST',
+    path: '/clearConfigCollection',
+    handler: 'Controller.clearConfigCollection',
+    config: {
+      policies: [],
+      auth: false,
+    },
+  },
 ];

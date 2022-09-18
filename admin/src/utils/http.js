@@ -12,12 +12,12 @@ const http = {
             method: "GET",
         });
     },
-    addConfigCollection: async (baseUrl, choices) => {
+    addConfigCollection: async (swaggerUrl, selected) => {
         return await request('/strapi-plugin-migrate-data/addConfigCollection', {
             method: 'POST',
             body: {
-                baseUrl: baseUrl,
-                choices: choices
+                swaggerUrl: swaggerUrl,
+                selected: selected
             }
         });
     },
@@ -34,23 +34,28 @@ const http = {
             }
         });
     },
-    dataTransfer: async (data,index,checked) => {
+    dataTransfer: async (data, index, checked) => {
         return await request('/strapi-plugin-migrate-data/dataTransfer', {
             method: 'Post',
             body: {
                 data: data,
-                index:index,
-                clear:checked
+                index: index,
+                clear: checked
             }
         });
     },
-    relationTransfer: async (data,index) => {
+    relationTransfer: async (data, index) => {
         return await request('/strapi-plugin-migrate-data/relationTransfer', {
             method: 'Post',
             body: {
                 data: data,
-                index:index
+                index: index
             }
+        });
+    },
+    clearConfigCollection: async () => {
+        return await request('/strapi-plugin-migrate-data/clearConfigCollection', {
+            method: 'Post',
         });
     }
 
