@@ -3,15 +3,15 @@
 
   
 
-Strapi versiyon 3 verilerinizi strapinin vermiş olduğu apiler ile versiyon 4 e taşıyın. Eklentiyi kullanabilmek için her iki taraftada swagger kullanılıyor olması gerekir.
+You can move your strapi V3 data to V4 with the APIs that strapi has made available. In order to use the plugin, swagger must be used on both sides.
 
   
 
-## Swagger kurulumu V4
+## Swagger Install “V4”:
 
   
 
-`npm` ile:
+with `npm`:
 
 ```bash
 
@@ -21,7 +21,7 @@ npm install @strapi/plugin-documentation
 
   
 
-`yarn` ile:
+with `yarn`:
 
 ```bash
 
@@ -31,7 +31,7 @@ yarn add @strapi/plugin-documentation
 
   
 
-sonrasında strapi build edilmeli:
+To apply the plugin to Strapi, a re-build is needed:
 
 ```bash
 
@@ -47,23 +47,23 @@ strapi build
 
   
 
-[Strapi V3 e swagger kurulumu için](https://docs-v3.strapi.io/developer-docs/latest/development/plugins/documentation.html)
+[To install swagger on the Strapi V3.](https://docs-v3.strapi.io/developer-docs/latest/development/plugins/documentation.html)
 
   
 
-## Kurulum
+## SETUP:
 
   
 
-Bu eklenti V4 için geliştirilmiştir.
+This plugin is developed for V4.
 
   
 
-Strapi projeniz içinde paketi ekleyin:
+Add the package into your Strapi project:
 
   
 
-`npm` ile:
+with `npm`:
 
 ```bash
 
@@ -73,7 +73,7 @@ npm install strapi-plugin-merge-data
 
   
 
-`yarn` ile:
+with `yarn`:
 
 ```bash
 
@@ -83,7 +83,7 @@ yarn add strapi-plugin-merge-data
 
   
 
-sonrasında strapi build edilmeli:
+After these steps Strapi should be re-built:
 
 ```bash
 
@@ -93,13 +93,13 @@ strapi build
 
   
 
-sonrasında strapiyi çalıştırın
+Strapi should be run in the next step:
 
 ```bash
 
 strapi start
 
-// veya
+// or
 
 yarn start
 
@@ -107,8 +107,7 @@ yarn start
 
   
 
-Strapiyi production modda çalıştırın. Developer mod desteklenmez.
-
+The plugin works in Production mode. The above command runs Strapi in "Production" mode. This plugin does not support "Developer" mode.
   
   
 
@@ -120,19 +119,19 @@ Strapiyi production modda çalıştırın. Developer mod desteklenmez.
 
   
 
-## Başlarken
+## GETTING STARTED:
 
   
 
-V3 de V4 e geçiriceğiniz tabloya ait strapinin vermiş olduğu find ve count apisinin public rolunde açık olması gerekmektedir.
+When migrating from V3 to V4, the "find" and "count" apis in the corresponding table of V3 should be in the "public" role.
 
   
 
-## Tabloların seçilmesi ve eklenmesi
+## Selecting and adding tables
 
   
 
-Settings sekmesini açıp V3 e ait swagger url i buraya giriyoruz ve ardından get entity model butonuna basıyoruz
+Open the "Settings" tab, enter the Swagger URL of V3 here and press the “Get Entity Model” button.
 
   
 
@@ -144,7 +143,7 @@ Settings sekmesini açıp V3 e ait swagger url i buraya giriyoruz ve ardından g
 
   
 
-sol tarafta v4 e ait talolar sağ tarafta ise v3 e ait tabloları seçebiliceğiniz bir tablo karşımıza çıkıyor
+On the left, there is a table where tables of V4 can be selected, and on the right, tables from V3 can be selected.
 
   
 
@@ -156,7 +155,7 @@ sol tarafta v4 e ait talolar sağ tarafta ise v3 e ait tabloları seçebiliceği
 
   
 
-v4 deki tabloya karşılık gelen v3 tablosunu seçtikten sonra ok tuşuna basıp kolonları seçmeniz gerekir. Sol taraftakiler V4 e ait seçilmiş tablonun kolonları sol taraftakiler ise V3 e ait seçilmiş tablonun kolonlarıdır. V4 de seçilmiş tablonun kolonlarına karşılık gelicek v3 kolonlarını seçip devam ediyoruz. Aynı olan kolon isimleri seçili gelir bunları düzenleyebilirsiniz. Bütün seçimleri yaptıktan sonra en aşağıda bulunan save selected butonuna basıyoruz.
+After selecting the V3 table that corresponds to the table in V4, press OK and select the relevant columns. The values on the left show the columns of the selected table belonging to V4, and the values on the right show the columns of the selected table belonging to V3.  We select the columns V3 that will correspond to the columns of the table selected in V4. Columns with the same names are automatically selected and can be edited if desired. After making all the selections, the "save selected" button at the bottom is pressed.
 
   
 
@@ -168,7 +167,7 @@ v4 deki tabloya karşılık gelen v3 tablosunu seçtikten sonra ok tuşuna bası
 
   
 
-Eklediklerimiz collection sekmesine fotoğraftaki gibi gelicektir. clear table seçeneğini işaretlerseniz veri aktarımından önce ilgili tablodaki tüm verileri siler ve ardından veri aktarımına başlar. tablolar arasında ilişki söz konusu ise kolonları doğru eşlediğimize emin olduktan sonra dikkat etmemiz gereken id kolonlarınıda seçmiş olmak. ilişkiler id ler üzerinden yapılacağından verilerin aynı id ile geçirilmiş olması gerekir. Bu sebeple relation trasfer butonunu kullanmadan önce ilişkili olan tabloların verilerini geçirmiş olmanız gereklidir aksi taktirde ilişkiler aktarılmicaktır. dikkat edilmesi gereken diğer konu ise veriyi geçirmeden önce aynı id ile veri varsa yeni veri eklenmicektir bunun için temiz tablolara veri aktarımı tavsiye edilmektedir aksi taktirde ilişkiler yanlış kurulabilir.
+Additions are shown in the "collection" tab. If the "Clear Table" option is checked,all data in the relevant table is deleted before data transfer, and then data transfer starts. If there is a relationship between two tables, make sure that the mappings are correct. The data should be exported to V4 with the ID number in the V3 table. For this reason, before clicking the "relation transfer" button, you must have transferred the data of the related tables correctly, otherwise the relations will not be transferred. Another thing to consider is to make sure that data with the same credential does not already exist in version 4 before transferring the data. If data has been transferred with the same ID number before, the new data will not be transferred to V4. For all these reasons, it is recommended to transfer data to clean tables, otherwise relationships may be established incorrectly.
 
   
 
@@ -178,7 +177,7 @@ Eklediklerimiz collection sekmesine fotoğraftaki gibi gelicektir. clear table s
 
 </p>
 
-Eğer ekli koleksiyon varsa settings sekmesinden düzenleme yapılabilir.Değişiklikleri kaydetmek için Save change butonu kullanılabilir veya yeni bir Swagger ile devam edilmek isteniyorsa altaki clear Collections butonu ile bütün koleksiyon silinebilir. 
+If there is a collection attached, it can be edited from the "settings" tab.  "Save Change" button can be used to save changes. If it is desired to continue with a new Swagger, all collections can be deleted with the "Clear Collections" button atthe bottom.
 
 <p  align="center">
 

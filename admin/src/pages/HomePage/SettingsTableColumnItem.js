@@ -28,7 +28,6 @@ const SettingsTableColumnItem = (props) => {
         if (props.exportTableColumns[props.columnItemComboArray[props.id]]) {
             setSelectType(props.exportTableColumns[props.columnItemComboArray[props.id]].type);
         }
-        console.log("bir kere");
         setColumnItemCombobox(props.columnItemComboArray[props.id])
         setOnceRunControl(false)
     }

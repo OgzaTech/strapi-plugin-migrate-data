@@ -47,7 +47,6 @@ const HomePage = () => {
       if (data.swaggerUrl) {
         setEditMod(true)
         setMessage(data.swaggerUrl)
-        console.log("buraya giriyor")
         getSchemas(data.swaggerUrl)
       }
     })
@@ -63,10 +62,7 @@ const HomePage = () => {
   }
 
   const handleClick = async (event) => {
-    console.log("çalıştı")
     if (message) {
-      console.log("burasıda çalıştı")
-
       exportSchema = await http.getExportSchema(message);
       importSchema = await http.getImportSchema();
       setOkButtonState(true);
@@ -79,7 +75,6 @@ const HomePage = () => {
   };
 
   const saveSelected = async (as) => {
-    /*     console.log(dataArray)*/
     await http.addConfigCollection(message, dataArray);
     window.location.reload()
   }

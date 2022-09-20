@@ -19,7 +19,6 @@ const SettingsTableItem = (props) => {
   let dataColumnArray = [];
 
   if (mainRunControl && props.editMod) {
-    console.log("jlkfja");
     props.ConfigCollection.map((dt) => {
       if (dt.targetTableName == props.tableName){
         setMappingsColumn(dt.mappings);
